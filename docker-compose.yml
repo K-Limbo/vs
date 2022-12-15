@@ -1,0 +1,24 @@
+version: '3'
+services:
+  controller:
+    image: controller:1.0
+    ports:
+      - "4000:4000/udp"
+      - "4001:4001"
+    build: ./Controller
+    environment:
+      CONTROLLER_UDP_PORT: 4000
+      CONTROLLER_TCP_PORT: 4001
+      WORKER_COUNT: 5
+  worker:
+    image: worker:1.0
+    network_mode: host
+    build: ./Worker
+    environment:
+      CONTROLLER_IP: localhost
+      CONTROLLER_UDP_PORT: 4000
+      CONTROLLER_TCP_PORT: 4001
+    depends_on:
+      - controller
+    deploy:
+        replicas: 5

@@ -1,0 +1,70 @@
+version: '3'
+services:
+  controller:
+    image: controller:1.0
+    ports:
+      - "4000:4000/udp"
+    build: ./controller
+    environment:
+      CONTROLLER_UDP_PORT: 4000
+      CONTROLLER_TCP_PORT: 4001
+
+  worker1:
+    image: worker:1.0
+    ports:
+      - "5000:5000/udp"
+    build: ./worker
+    environment:
+      CONTROLLER_IP: controller
+      CONTROLLER_UPD_PORT: 4000
+      CONTROLLER_TCP_PORT: 4001
+      WORKER_PORT: 5000
+    depends_on:
+      - controller
+  worker2:
+    image: worker:1.0
+    ports:
+      - "5001:5000/udp"
+    build: ./worker
+    environment:
+      CONTROLLER_IP: controller
+      CONTROLLER_PORT: 4000
+      WORKER_PORT: 5000
+    depends_on:
+      - controller
+
+  worker3:
+    image: worker:1.0
+    ports:
+      - "5002:5000/udp"
+    build: ./worker
+    environment:
+      CONTROLLER_IP: controller
+      CONTROLLER_PORT: 4000
+      WORKER_PORT: 5000
+    depends_on:
+      - controller
+
+  worker4:
+    image: worker:1.0
+    ports:
+      - "5003:5000/udp"
+    build: ./worker
+    environment:
+      CONTROLLER_IP: controller
+      CONTROLLER_PORT: 4000
+      WORKER_PORT: 5000
+    depends_on:
+      - controller
+
+  worker5:
+    image: worker:1.0
+    ports:
+      - "5004:5000/udp"
+    build: ./worker
+    environment:
+      CONTROLLER_IP: controller
+      CONTROLLER_PORT: 4000
+      WORKER_PORT: 5000
+    depends_on:
+      - controller

@@ -1,0 +1,6 @@
+vs\worker\TCPConnection.class
+vs\worker\Worker$Status.class
+vs\worker\UDPConnection.class
+vs\worker\Controller.class
+vs\worker\Main.class
+vs\worker\Worker.class

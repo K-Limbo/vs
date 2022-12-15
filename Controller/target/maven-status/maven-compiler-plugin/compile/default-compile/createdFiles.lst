@@ -1,0 +1,7 @@
+vs\controller\UDPConnection.class
+vs\controller\Worker$Status.class
+vs\controller\TCPConnection.class
+vs\controller\Worker.class
+vs\controller\Database.class
+vs\controller\Controller.class
+vs\controller\Main.class
